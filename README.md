@@ -1,0 +1,2 @@
+# LightWhite_For_PaperInk
+一个超级好看的纸小墨主题，由蚊子大佬设计的主题LightWhite移植而来
