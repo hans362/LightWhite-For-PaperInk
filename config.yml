@@ -3,6 +3,10 @@ copy:
     - bundle
     - favicon.png
     - robots.txt
+    - "theme/img"
+    - "theme/css"
+    - "theme/js"
+    - "theme/fonts"
 # I18n Support
 lang:
     archive:
