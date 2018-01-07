@@ -1,56 +1,42 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {{template "head" .}}
-        <meta name="keywords" content="{{.Site.Subtitle}}">
-        <meta name="description" content="{{.Site.Subtitle}}">
-        <title>{{.Site.Title}}</title>
-    </head>
-    <body>
-        <article class="container">
-            {{template "header" .}}
-            <article class="main page">
-                <header class="header site">
-                    {{if .TagName}}
-                        {{if .Site.Logo}}<img class="logo" src="{{.Site.Logo}}" />{{end}}
-                        <h1 class="tag">{{.TagName}}</h1>
-                        <h2 class="tag-sub">{{.TagCount}} {{i18n "articles"}}</h2>
-                    {{else}}
-                        {{if .Site.Logo}}<img class="logo" src="{{.Site.Logo}}" />{{end}}
-                        <h1 class="title">{{.Site.Title}}</h1>
-                        <h2 class="subtitle">{{.Site.Subtitle}}</h2>
-                        {{template "search" .}}
-                    {{end}}
-                </header>
-                <ul class="article-list">
-                    {{range .Articles}}
-                    <li class="article">
-                        <a class="title" href="{{$.Site.Root}}/{{.Link}}">{{if .Top}}<span class="top">[{{i18n "top"}}]</span>{{end}}{{.Title}}</a>
-                        {{if .Cover}}<div class="cover" style="background-image:url({{.Cover}});"></div>{{end}}
-                        {{if .Preview}}<section class="preview content">{{.Preview}}</section>{{end}}
-                        <section class="info">
-                            {{if .Author.Avatar}}<span class="avatar" style="background-image: url({{.Author.Avatar}});"></span>{{end}}
-                            {{if .Author.Name}}<a class="name" href="{{.Site.Root}}/about.{{.Author.Id}}.html">{{.Author.Name}}</a>{{end}}
-                            {{if .Update}}
-                            <span class="date" data-time="{{.Update}}"><span class="from"></span></span>
-                            {{else}}
-                            <span class="date" data-time="{{.Date}}"><span class="from"></span></span>
-                            {{end}}
-                            <span class="tags">
-                            {{range .Tags}}<a class="tag" href="{{$.Site.Root}}/tag/{{.}}/index.html">{{.}}</a>{{end}}
-                            </span>
-                        </section>
-                    </li>
-                    {{end}}
-                </ul>
-                <section class="page-nav">
+{{template "head" .}}
+<div class="article-list">
+    
+    <div class="article">
+        <div class="tooltip">
+            <div class="date">
+                <div class="day">{{.Date}}</div>
+
+            </div>
+
+            <div class="article-mobile-title">
+                <a pjax href="{{$.Site.Root}}/{{.Link}}">  </a>
+            </div>
+            <div class="font-control" ">
+                <span class="mdi mdi-format-annotation-plus"></span>
+            </div>
+            <div class="go-comment">
+                <span class="mdi mdi-comment-outline"></span>
+            </div>
+            <div class="go-share">
+                <span class="mdi mdi-share-variant"></span>
+            </div>
+            <div class="go-tip">
+                <span class="mdi mdi-coin"></span>
+            </div>
+        </div>
+        <div class="article-main">
+
+            <div class="article-content" >
+                            {{if .Preview}}{{.Preview}}{{end}}
+            </div>
+            <div class="article-comment">
+                
+            </div>
+        </div>
+    </div>
                     {{if .Prev}}<a class="prev" href="{{.Site.Root}}/{{.Prev}}">{{i18n "prev_page"}}</a>{{end}}
                     {{if ne .Total 1}}<span class="nav">{{.Page}} / {{.Total}}</span>{{end}}
                     {{if .Next}}<a class="next" href="{{.Site.Root}}/{{.Next}}">{{i18n "next_page"}}</a>{{end}}
-                </section>
-            </article>
-        </article>
-        {{template "footer" .}}
-    </body>
-    <script src="{{.Site.Root}}/bundle/index.js"></script>
-</html>
+</div>
+
+{{template "footer" .}}
