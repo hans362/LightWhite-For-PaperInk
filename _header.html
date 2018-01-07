@@ -1,11 +1,41 @@
-<header class="header-wrap">
-  <a class="index" href="{{.Site.Root}}/">
-    {{if .Site.Logo}}<img class="logo" src="{{.Site.Logo}}" />{{end}}
-    {{.Site.Title}}
-  </a>
-  <ul class="menu">
-      <li class="menu-item"><a href="{{.Site.Root}}/archive.html">{{i18n "archive"}}</a></li>
-      <li class="menu-item"><a href="{{.Site.Root}}/tag.html">{{i18n "tag"}}</a></li>
-      {{if .Site.Url}}<li class="menu-item"><a href="{{.Site.Root}}/atom.xml">{{i18n "rss"}}</a></li>{{end}}
-  </ul>
-</header>
+<!DOCTYPE HTML>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{.Site.Title}}</title>
+	<link rel="stylesheet" href="{{.Site.Root}}/css/w.css?v2">
+	<script src="{{.Site.Root}}/js/pjax.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdn.bootcss.com/aplayer/1.6.0/APlayer.min.js"></script>
+	<script src="{{.Site.Root}}/js/o.js?v2" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+	<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet">
+	<script>
+	    hljs.initHighlightingOnLoad();
+	    new Pjax({ selectors: [".article-list"] });
+	</script> 
+	<link href="{{.Site.Root}}/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="cover">
+        <div class="middle animated fadeInUp">
+            <div class="info">
+                <div class="avatar"><img src="https://gravatar.cat.net/avatar/93f5d0e297fe1c30eb4cf540e214523a?s=100&r=X&d=mm"></div>
+                <div class="texts">
+                    <div class="title">{{.Site.Title}}</div>
+                    <div class="description">{{.Site.Subtitle}}</div>
+                </div>
+            </div>
+            <div class="nav" id="page-start">
+                <div class="nav_left">
+                <a pjax class="item" href="{{.Site.Root}}"><span class="mdi mdi-home"></span>&nbsp;主页</a>
+                <a pjax class="item" href="{{.Site.Root}}/archive.html"><span ></span>&nbsp;归档</a>
+                <a pjax class="item" href="{{.Site.Root}}/atom.xml"><span ></span>&nbsp;RSS</a>
+                </div>
+                <div class="nav_right">
+                    <div id="aplayer" class="aplayer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
