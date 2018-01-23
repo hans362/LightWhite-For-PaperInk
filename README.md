@@ -2,6 +2,8 @@
 
 一个超级好看的纸小墨主题，由蚊子大佬设计的主题LightWhite移植而来
 
+使用方法：https://www.hans362.me/archives/134/
+
 移植自Typecho主题：https://github.com/Archeb/LightWhite
 
 ***
