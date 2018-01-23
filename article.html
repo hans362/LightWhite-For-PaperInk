@@ -35,7 +35,20 @@ document.getElementById("day").href = day;
             
            
  
-    		
+    		{{if .Cover}}<a pjax href="{{$.Site.Root}}/{{.Link}}">
+    		    <div class="preview-image-container">
+    		        <div class="preview-image" style="background-image:url({{.Cover}});"></div>
+    		        <div class="preview-image-title">
+    		            <div class="preview-image-title-content">{{.Title}}</div>
+        		        <div class="preview-image-meta">
+                            <span class="mdi mdi-account-edit"></span> {{.Author.Name}}
+                            &nbsp;<span class="mdi mdi-tag"></span> {{range .Tags}}{{.}}{{end}}
+                        </div>
+                    </div>
+    		        
+                </div>
+            </a>
+			 {{else}}
             <div class="article-title">
                 <a pjax href="">
             {{.Title}}</a>
@@ -44,7 +57,9 @@ document.getElementById("day").href = day;
                     &nbsp;<span class="mdi mdi-tag"></span> {{range .Tags}}{{.}}{{end}}
                 </div>
             </div>
-           
+           {{end}}
+		   
+		   
             <div class="article-content" id="">
                             {{.Content}}
             </div>

@@ -1,12 +1,14 @@
 {{template "header" .}}
-<div class="article-list">
+
+
+<div class="article-list singlepage">
 {{range .Articles}}
-    <div class="article">
-        <div class="tooltip">
-            <div class="date">
-                <div class="day">day</div>
-                <div class="month">month</div>
-            </div>
+<div class="article singlepage">
+<div class="tooltip">
+<div class="date">
+<div class="day">day</div>
+<div class="month">month</div>
+</div>
             
             <div class="font-control" onclick="">
                 <span class="mdi mdi-format-annotation-plus"></span>
@@ -22,7 +24,21 @@
             </div>
         </div>
         <div class="article-main">
-            
+
+            {{if .Cover}}<a pjax href="{{$.Site.Root}}/{{.Link}}">
+    		    <div class="preview-image-container">
+    		        <div class="preview-image" style="background-image:url({{.Cover}});"></div>
+    		        <div class="preview-image-title">
+    		            <div class="preview-image-title-content">{{.Title}}</div>
+        		        <div class="preview-image-meta">
+                            <span class="mdi mdi-account-edit"></span> {{.Author.Name}}
+                            &nbsp;<span class="mdi mdi-tag"></span> {{range .Tags}}{{.}}{{end}}
+                        </div>
+                    </div>
+    		        
+                </div>
+            </a>
+			 {{else}}
             <div class="article-title">
                 <a pjax href="{{$.Site.Root}}/{{.Link}}">
             {{.Title}}</a>
@@ -31,13 +47,14 @@
                     &nbsp;<span class="mdi mdi-tag"></span> {{range .Tags}}{{.}}{{end}}
                 </div>
             </div>
-
-            <div class="article-content" id="tr-<?php echo $this->cid ?>">
-                           {{if .Preview}}<section class="preview content">{{.Preview}}</section>{{end}}
-
+			{{end}}
+            <div class="article-content" id="">
+                {{if .Preview}}<section class="preview content">{{.Preview}}</section>{{end}}
         </div>
     </div>
+
 {{end}}
+
                     {{if .Prev}}<a class="prev" href="{{.Site.Root}}/{{.Prev}}">{{i18n "prev_page"}}</a>{{end}}
                     {{if ne .Total 1}}<span class="nav">{{.Page}} / {{.Total}}</span>{{end}}
                     {{if .Next}}<a class="next" href="{{.Site.Root}}/{{.Next}}">{{i18n "next_page"}}</a>{{end}}
