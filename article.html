@@ -1,45 +1,71 @@
-<!DOCTYPE html>
-<html>
-    <head>
-
-    </head>
-    <body>
 {{template "header" .}}
+
+<script type="text/javascript">
+var myDate = new Date({{.Update}});
+var month = myDate.getMonth();
+var day = myDate.getDay();
+document.getElementById("month").href = month;
+document.getElementById("day").href = day;
+</script>
+
 <div class="article-list singlepage">
-    
+
     <div class="article singlepage">
         <div class="tooltip">
             
             <div class="date">
-                
-				
-				{{if .Update}}
-                    <div class="day">{{.Update}}</div>
-                    {{else}}
-                    <div class="day">{{.Date}}</div>
-                    {{end}}
-
+                <div class="day"><a id="day">day</a></div>
+                <div class="month"><a id="month">month</a></div>
             </div>
+            <div class="article-mobile-title">
+                <a href="">
+            {{.Title}}</a>
+            </div>
+            <div class="font-control" >
+                <span class="mdi mdi-format-annotation-plus"></span>
+            </div>
+            <a href="#comments"><div class="go-comment">
+                <span class="mdi mdi-comment-outline"></span>
+            </div></a>
+            <div class="go-share">
+                <span class="mdi mdi-share-variant"></span>
+            </div>
+        </div>
+        <div class="article-main">
             
+           
+    		<a pjax href="">
+    		    <div class="preview-image-container">
+    		        <div class="preview-image" style="background-image:url()"></div>
+    		        <div class="preview-image-title">
+    		            <div class="preview-image-title-content">{{.Title}}</div>
+        		        <div class="preview-image-meta">
+                            <span class="mdi mdi-account-edit"></span> {{.Author.Name}}
+                            &nbsp;<span class="mdi mdi-tag"></span> {{range .Tags}}{{.}}{{end}}
+                        </div>
+                    </div>
+    		        
+                </div>
+            </a>
     		
             <div class="article-title">
-                <a pjax href="">{{.Title}}</a>
+                <a pjax href="">
+            {{.Title}}</a>
                 <div class="article-meta">
                     <span class="mdi mdi-account-edit"></span> {{.Author.Name}}
-                    <span class="mdi mdi-tag"></span>
+                    &nbsp;<span class="mdi mdi-tag"></span> {{range .Tags}}{{.}}{{end}}
                 </div>
             </div>
-
-            <div class="article-content" >
+           
+            <div class="article-content" id="">
                             {{.Content}}
             </div>
             <div class="article-comment">
-                
+                {{template "comment" .}}
             </div>
             
         </div>
     </div>
+
 </div>
-        {{template "footer" .}}
-</body>
-</html>
+{{template "footer" .}}
