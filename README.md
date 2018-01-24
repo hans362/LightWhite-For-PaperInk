@@ -8,7 +8,7 @@
 
 ***
 
-# 【Pre-Release-V0.1-Alpha】LightWhite For 纸小墨 Version 0.1
+# 【Pre-Release-V0.1】LightWhite For 纸小墨 Version 0.1
 
 ## 更新日志 ##
 
