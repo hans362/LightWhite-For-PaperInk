@@ -16,7 +16,7 @@
 
 请勿直接下载项目！！！请下载最新Release包
 
-项目演示（GitHubPages）：https://hans362.github.io/
+项目演示（GitHubPages）：已撤下
 
 ## 已知BUG ##
 
